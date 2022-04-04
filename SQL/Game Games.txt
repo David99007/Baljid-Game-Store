@@ -1,0 +1,19 @@
+use GameStore
+
+Create table Game.Games
+(
+Game_ID varchar(5) Primary Key CONSTRAINT Cons_Game CHECK (Game_ID Like 'G%') NOT NULL,
+Game_Name varchar(32) NOT NULL,
+Platform varchar(255) NOT NULL,
+Category varchar(255) NOT NULL,
+Publisher varchar(32) NOT NULL,
+Description varchar(255) NOT NULL,
+Stock int NOT NULL,
+Supplier_ID varchar(5) Constraint fkSupplier_ID Foreign Key (Supplier_ID) References Game.Supplier NOT NULL,
+Price Money NOT NULL,
+Game_Cover image
+);
+
+sp_help 'Game.Games'
+
+drop table Game.Games
